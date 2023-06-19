@@ -1,10 +1,11 @@
 import * as React from "react";
 import type { InferGetStaticPropsType, GetStaticProps } from "next";
 import Head from "next/head";
-import REGIONS from "../data/regions";
+import REGIONS from "../constants/regions";
 import BarChart from "components/BarChart";
 import { RegionType, WeatherDataType } from "types";
 import { displayMonthAndYear, groupByMonths } from "helpers";
+import LineChart from "components/LineChart";
 
 const getTempData = (data: WeatherDataType, region: RegionType) => {
   let filteredData: {
@@ -76,14 +77,14 @@ export default function Home({
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="flex gap-5">
+      <div className="flex flex-col gap-5">
         <BarChart
           header="Good Days to grow grapes"
           data={perfectTempData}
           xScale="Months"
           yScale="Days"
         />
-        <BarChart
+        <LineChart
           header="Precipitation summary per month"
           data={averageTempData}
           xScale="Months"
