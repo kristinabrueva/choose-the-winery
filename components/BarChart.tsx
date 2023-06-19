@@ -9,6 +9,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import { BACKGROUND_COLORS, BORDER_COLORS } from "constants/graphColors";
 import { Bar } from "react-chartjs-2";
 
 ChartJS.register(
@@ -54,28 +55,12 @@ const BarChart: React.FunctionComponent<{
     },
   };
 
-  const borderColors = [
-    "rgba(238 130 238)",
-    "rgba(30 130 238)",
-    "rgba(30 30 238)",
-    "rgba(230 30 38)",
-    "rgba(30 130 2)",
-  ];
-
-  const bgColors = [
-    "rgba(238 130 238 / 0.7)",
-    "rgba(30 130 238 / 0.7)",
-    "rgba(30 30 238 / 0.7)",
-    "rgba(230 30 38 / 0.7)",
-    "rgba(30 130 2 / 0.7)",
-  ];
-
   const sets = data.map((set, i) => ({
     type: "bar" as const,
     label: set.chartLabel,
     data: set.values,
-    borderColor: borderColors[i],
-    backgroundColor: bgColors[i],
+    borderColor: BORDER_COLORS[i],
+    backgroundColor: BACKGROUND_COLORS[i],
     cubicInterpolationMode: "monotone" as const,
     borderWidth: 2,
   }));
@@ -87,7 +72,7 @@ const BarChart: React.FunctionComponent<{
 
   return (
     <div className="px-20">
-      <h4 className="text-gray-800 p-10 font-bold text-4xl text-center">
+      <h4 className="text-gray-700 p-10 font-bold text-xl text-center">
         {header}
       </h4>
       {chartData ? (
