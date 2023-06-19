@@ -24,19 +24,22 @@ ChartJS.register(
 
 const BarChart: React.FunctionComponent<{
   data: any;
-}> = ({ data }) => {
+  header: string;
+  yScale: string;
+  xScale: string;
+}> = ({ data, header, yScale, xScale }) => {
   const options = {
     scales: {
       x: {
         title: {
           display: true,
-          text: "Months",
+          text: xScale,
         },
       },
       y: {
         title: {
           display: true,
-          text: "Days",
+          text: yScale,
         },
       },
     },
@@ -46,7 +49,7 @@ const BarChart: React.FunctionComponent<{
     plugins: {
       title: {
         display: false,
-        text: "Grape Days",
+        text: header,
       },
     },
   };
@@ -74,7 +77,7 @@ const BarChart: React.FunctionComponent<{
     borderColor: borderColors[i],
     backgroundColor: bgColors[i],
     cubicInterpolationMode: "monotone" as const,
-    borderWidth: 1,
+    borderWidth: 2,
   }));
 
   const chartData = {
@@ -83,11 +86,15 @@ const BarChart: React.FunctionComponent<{
   };
 
   return (
-    <div className="p-5">
-      <h4 className="p-5 font-semibold text-2xl text-center">
-        Good Days for Grapes
+    <div className="px-20">
+      <h4 className="text-gray-800 p-10 font-bold text-4xl text-center">
+        {header}
       </h4>
-      <Bar data={chartData} options={options} />
+      {chartData ? (
+        <Bar data={chartData} options={options} />
+      ) : (
+        <div>Ooops. Something went wrong :(</div>
+      )}
     </div>
   );
 };
