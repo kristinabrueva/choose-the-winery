@@ -2,6 +2,8 @@ import * as lowdash from "lodash";
 
 export const groupByMonths = (
   data: {
+    precipitation_sum: number;
+    temperature_2m_min?: number;
     temperature_2m_max: number;
     time: string;
   }[]
