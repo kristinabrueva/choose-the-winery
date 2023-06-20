@@ -2,10 +2,10 @@ import * as React from "react";
 import type { InferGetStaticPropsType, GetStaticProps } from "next";
 import Head from "next/head";
 import REGIONS from "../constants/regions";
-import BarChart from "components/BarChart";
 import { RegionType, WeatherDataType } from "types";
 import { displayMonthAndYear, groupByMonths } from "helpers";
 import LineChart from "components/LineChart";
+import BarChart from "components/BarChart";
 
 const getTempData = (data: WeatherDataType, region: RegionType) => {
   let filteredData: {
@@ -54,7 +54,7 @@ const getPrecipitationSumData = (data: WeatherDataType, region: RegionType) => {
   }
   return {
     chartLabel: `${region.name}, ${region.state}`,
-    values: Object.values(precipitationSumByMonths),
+    values: Object.values(precipitationSumByMonths) as number[],
     labels: Object.keys(groupedByMonths).map(displayMonthAndYear),
   };
 };
@@ -76,19 +76,21 @@ export default function Home({
         <meta name="description" content="Choose your winery" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <div className="flex flex-col gap-5">
+      <h1 className="text-gray-700 text-4xl py-10 text-center font-extrabold">
+        Choose your winery
+      </h1>
+      <div className="flex flex-col gap-10 lg:px-40 md:px-28 px-0">
         <BarChart
-          header="Good Days to grow grapes"
+          caption="Precipitation summary per month"
           data={perfectTempData}
-          xScale="Months"
           yScale="Days"
+          xScale="Months"
         />
         <LineChart
-          header="Precipitation summary per month"
+          caption="Precipitation summary per month"
           data={averageTempData}
-          xScale="Months"
           yScale="Precipitation, mm"
+          xScale="Months"
         />
       </div>
     </>
