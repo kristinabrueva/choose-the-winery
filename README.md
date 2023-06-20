@@ -1,34 +1,58 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# What is this?
 
-## Getting Started
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with Typescript, Tailwind and ChartJS.
 
-First, run the development server:
+## Setup
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+- Install all dependencies: `npm install`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Build the app: `npm run build`
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+- Run the app: `npm run start`
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## StoryBook
 
-## Learn More
+- Build: `npm run build-storybook`
 
-To learn more about Next.js, take a look at the following resources:
+- Run Storybook: `npm run storybook`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Open [http://localhost:6006](http://localhost:6006) to view it in the browser.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## DONE
 
-## Deploy on Vercel
+✅ Set up a new project using NextJS, Typescript, Tailwind, Storybook
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+✅ Fetch weather data on build time for the last year for each region using open-meteo API
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+✅ Pre-render page at build time using getStaticProps
+
+✅ Build reusable, accessible, mobile friendly charts using ChartJs
+
+✅ Transform data into filtered and grouped datasets
+
+✅ Display optimal months for growing grapes with 25 to 32 degrees C
+
+✅ Display precipitation summary for each month
+
+## TO-DO
+
+- fetch all data at once and handle errors
+
+- fetch data for past 10 years using current date to work with average/per year data
+
+- fetch climate change data for more accurate weather prediction for each region:
+  https://climate-api.open-meteo.com/v1/climate?latitude=52.52&longitude=13.41&start_date=2023-01-01&end_date=2050-12-31&daily=temperature_2m_max&models=CMCC_CM2_VHR4,FGOALS_f3_H,HiRAM_SIT_HR,MRI_AGCM3_2_S,EC_Earth3P_HR,MPI_ESM1_2_XR,NICAM16_8S
+
+- test data fetching
+
+- build separate tabs that show all data for each region
+
+- find strongest wind/worst humidity/coldest summer, etc. stat for each region. Rank them and display in a table
+
+- build the table to display the features of each region
+
+- snapshot testing
+
+- test all components/pages/helpers
