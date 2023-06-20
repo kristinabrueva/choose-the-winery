@@ -10,6 +10,7 @@ import {
   Legend,
 } from "chart.js";
 import { BACKGROUND_COLORS, BORDER_COLORS } from "constants/graphColors";
+import { useId } from "react";
 import { Bar } from "react-chartjs-2";
 
 ChartJS.register(
@@ -25,11 +26,17 @@ ChartJS.register(
 
 const BarChart: React.FunctionComponent<{
   data: any;
-  header: string;
+  caption: string;
   yScale: string;
   xScale: string;
-}> = ({ data, header, yScale, xScale }) => {
+}> = ({ data, caption, yScale, xScale }) => {
   const options = {
+    elements: {
+      bar: {
+        borderRadius: 5,
+        borderSkipped: "bottom" as const,
+      },
+    },
     scales: {
       x: {
         title: {
@@ -44,15 +51,6 @@ const BarChart: React.FunctionComponent<{
         },
       },
     },
-    layout: {
-      padding: 0,
-    },
-    plugins: {
-      title: {
-        display: false,
-        text: header,
-      },
-    },
   };
 
   const sets = data.map((set, i) => ({
@@ -61,7 +59,6 @@ const BarChart: React.FunctionComponent<{
     data: set.values,
     borderColor: BORDER_COLORS[i],
     backgroundColor: BACKGROUND_COLORS[i],
-    cubicInterpolationMode: "monotone" as const,
     borderWidth: 2,
   }));
 
@@ -71,16 +68,18 @@ const BarChart: React.FunctionComponent<{
   };
 
   return (
-    <div className="px-20">
-      <h4 className="text-gray-700 p-10 font-bold text-xl text-center">
-        {header}
-      </h4>
-      {chartData ? (
-        <Bar data={chartData} options={options} />
-      ) : (
-        <div>Ooops. Something went wrong :(</div>
-      )}
-    </div>
+    <figure>
+      <figcaption className="text-gray-700 px-10 text-center">
+        {caption}
+      </figcaption>
+      <Bar
+        data={chartData}
+        options={options}
+        aria-label={caption}
+        role="img"
+        id={`canvas${useId()}`}
+      />
+    </figure>
   );
 };
 
