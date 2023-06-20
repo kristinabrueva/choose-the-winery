@@ -10,6 +10,7 @@ import {
   Filler,
 } from "chart.js";
 import { BACKGROUND_COLORS, BORDER_COLORS } from "constants/graphColors";
+import { useId } from "react";
 import { Line } from "react-chartjs-2";
 
 ChartJS.register(
@@ -24,11 +25,16 @@ ChartJS.register(
 );
 const LineChart: React.FunctionComponent<{
   data: any;
-  header: string;
+  caption: string;
   yScale: string;
   xScale: string;
-}> = ({ data, header, yScale, xScale }) => {
+}> = ({ data, caption, yScale, xScale }) => {
   const options = {
+    // shows info for all sets at the same index on hover
+    interaction: {
+      mode: "index" as const,
+      intersect: true,
+    },
     scales: {
       x: {
         title: {
@@ -43,13 +49,21 @@ const LineChart: React.FunctionComponent<{
         },
       },
     },
-    layout: {
-      padding: 0,
-    },
     plugins: {
-      title: {
-        display: false,
-        text: header,
+      legend: {
+        labels: {
+          boxHeight: 14,
+          boxWidth: 14,
+          font: {
+            size: 14,
+          },
+        },
+      },
+    },
+    elements: {
+      point: {
+        hoverBorderWidth: 3,
+        hoverRadius: 5,
       },
     },
   };
@@ -70,16 +84,18 @@ const LineChart: React.FunctionComponent<{
   };
 
   return (
-    <div className="px-20">
-      <h4 className="text-gray-700 p-10 font-bold text-xl text-center">
-        {header}
-      </h4>
-      {chartData ? (
-        <Line data={chartData} options={options} />
-      ) : (
-        <div>Ooops. Something went wrong :(</div>
-      )}
-    </div>
+    <figure>
+      <figcaption className="text-gray-700 px-10 text-center">
+        {caption}
+      </figcaption>
+      <Line
+        data={chartData}
+        options={options}
+        aria-label={caption}
+        role="img"
+        id={`canvas-${useId()}`}
+      />
+    </figure>
   );
 };
 
