@@ -12,6 +12,7 @@ import {
 import { BACKGROUND_COLORS, BORDER_COLORS } from "constants/graphColors";
 import { useId } from "react";
 import { Line } from "react-chartjs-2";
+import ChartWrapper from "./ChartWrapper";
 
 ChartJS.register(
   CategoryScale,
@@ -84,10 +85,7 @@ const LineChart: React.FunctionComponent<{
   };
 
   return (
-    <figure>
-      <figcaption className="text-gray-700 px-10 text-center">
-        {caption}
-      </figcaption>
+    <ChartWrapper caption={caption}>
       <Line
         data={chartData}
         options={options}
@@ -95,7 +93,7 @@ const LineChart: React.FunctionComponent<{
         role="img"
         id={`canvas-${useId()}`}
       />
-    </figure>
+    </ChartWrapper>
   );
 };
 
