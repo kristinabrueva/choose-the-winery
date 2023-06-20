@@ -62,6 +62,8 @@ const getPrecipitationSumData = (data: WeatherDataType, region: RegionType) => {
 export default function Home({
   historicData,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  if (!historicData) return <div>No data</div>;
+
   const perfectTempData = historicData.map((i, index) =>
     getTempData(i, REGIONS[index])
   );
@@ -76,23 +78,25 @@ export default function Home({
         <meta name="description" content="Choose your winery" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1 className="text-gray-700 text-4xl py-10 text-center font-extrabold">
-        Choose your winery
-      </h1>
-      <div className="flex flex-col gap-10 lg:px-40 md:px-28 px-0">
-        <BarChart
-          caption="Precipitation summary per month"
-          data={perfectTempData}
-          yScale="Days"
-          xScale="Months"
-        />
-        <LineChart
-          caption="Precipitation summary per month"
-          data={averageTempData}
-          yScale="Precipitation, mm"
-          xScale="Months"
-        />
-      </div>
+      <main className="py-10">
+        <h1 className="text-gray-700 text-4xl text-center font-extrabold">
+          Choose your winery
+        </h1>
+        <div className="flex flex-col gap-10 lg:px-40 md:px-28 px-0 pt-10">
+          <BarChart
+            caption="Precipitation summary per month"
+            data={perfectTempData}
+            yScale="Days"
+            xScale="Months"
+          />
+          <LineChart
+            caption="Precipitation summary per month"
+            data={averageTempData}
+            yScale="Precipitation, mm"
+            xScale="Months"
+          />
+        </div>
+      </main>
     </>
   );
 }
