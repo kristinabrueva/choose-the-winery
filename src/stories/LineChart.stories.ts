@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import LineChart from "components/LineChart";
+import LineChart from "src/components/LineChart";
 
 const meta: Meta<typeof LineChart> = {
   title: "LineChart",

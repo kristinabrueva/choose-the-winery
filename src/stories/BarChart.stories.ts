@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import BarChart from "components/BarChart";
+import BarChart from "src/components/BarChart";
 
 const meta: Meta<typeof BarChart> = {
   title: "BarChart",

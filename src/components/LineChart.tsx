@@ -2,41 +2,39 @@ import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
-  LineElement,
   PointElement,
-  BarElement,
+  LineElement,
   Title,
   Tooltip,
   Legend,
+  Filler,
 } from "chart.js";
-import { BACKGROUND_COLORS, BORDER_COLORS } from "constants/graphColors";
+import { BACKGROUND_COLORS, BORDER_COLORS } from "src/constants/graphColors";
 import { useId } from "react";
-import { Bar } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 import ChartWrapper from "./ChartWrapper";
 
 ChartJS.register(
   CategoryScale,
   LinearScale,
   PointElement,
-  BarElement,
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  Filler
 );
-
-const BarChart: React.FunctionComponent<{
+const LineChart: React.FunctionComponent<{
   data: any;
   caption: string;
   yScale: string;
   xScale: string;
 }> = ({ data, caption, yScale, xScale }) => {
   const options = {
-    elements: {
-      bar: {
-        borderRadius: 5,
-        borderSkipped: "bottom" as const,
-      },
+    // shows info for all sets at the same index on hover
+    interaction: {
+      mode: "index" as const,
+      intersect: true,
     },
     scales: {
       x: {
@@ -52,14 +50,32 @@ const BarChart: React.FunctionComponent<{
         },
       },
     },
+    plugins: {
+      legend: {
+        labels: {
+          boxHeight: 14,
+          boxWidth: 14,
+          font: {
+            size: 14,
+          },
+        },
+      },
+    },
+    elements: {
+      point: {
+        hoverBorderWidth: 3,
+        hoverRadius: 5,
+      },
+    },
   };
 
   const sets = data.map((set, i) => ({
-    type: "bar" as const,
+    type: "line" as const,
     label: set.chartLabel,
     data: set.values,
     borderColor: BORDER_COLORS[i],
     backgroundColor: BACKGROUND_COLORS[i],
+    cubicInterpolationMode: "monotone" as const,
     borderWidth: 2,
   }));
 
@@ -70,15 +86,15 @@ const BarChart: React.FunctionComponent<{
 
   return (
     <ChartWrapper caption={caption}>
-      <Bar
+      <Line
         data={chartData}
         options={options}
         aria-label={caption}
         role="img"
-        id={`canvas${useId()}`}
+        id={`canvas-${useId()}`}
       />
     </ChartWrapper>
   );
 };
 
-export default BarChart;
+export default LineChart;
