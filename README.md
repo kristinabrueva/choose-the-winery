@@ -1,3 +1,4 @@
+
 # What is this?
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with Typescript, Tailwind and ChartJS.
@@ -11,6 +12,22 @@ You have made the decision that you'd like to start your own Vineyard in one of 
 - For each region over a 30 year period, what percentage of that period can we expect to have good grapes for wine production?
 
 Use climate data from the Open Mateo Climate API (https://open-meteo.com/en/docs/climate-api) as the data source for your dashboard.
+
+## Screenshots
+
+### Desktop
+
+<img width="1289" alt="Screen Shot 2023-06-22 at 09 35 08" src="https://github.com/kristinabrueva/choose-the-winery/assets/2128531/5b66f731-7c22-40a2-b055-5e3d6fa860e8">
+<img width="1272" alt="Screen Shot 2023-06-22 at 09 35 29" src="https://github.com/kristinabrueva/choose-the-winery/assets/2128531/eb7976b4-51b4-46aa-87ff-f55b34f72c99">
+<img width="1226" alt="Screen Shot 2023-06-22 at 09 35 39" src="https://github.com/kristinabrueva/choose-the-winery/assets/2128531/4e0b632c-48ca-4310-ab71-ee0c5917cd06">
+
+
+
+### Tablet
+<img width="366" alt="Screen Shot 2023-06-22 at 09 39 05" src="https://github.com/kristinabrueva/choose-the-winery/assets/2128531/7ad6bc12-ce2e-4b49-ac3f-f5eef884d221">
+
+### Mobile
+<img width="205" alt="Screen Shot 2023-06-22 at 09 37 47" src="https://github.com/kristinabrueva/choose-the-winery/assets/2128531/8cfb4b31-696d-4bc0-ac77-bc52873fd438">
 
 ## Setup
 
