@@ -1,4 +1,4 @@
-import { RegionType } from "types";
+import { RegionType } from "../types";
 
 const REGIONS: RegionType[] = [
   {

@@ -2,7 +2,7 @@ import * as React from "react";
 import type { InferGetStaticPropsType, GetStaticProps } from "next";
 import Head from "next/head";
 import REGIONS from "../constants/regions";
-import { RegionType, WeatherDataType } from "types";
+import { RegionType, WeatherDataType } from "../types";
 import { displayMonthAndYear, groupByMonths } from "../helpers";
 import LineChart from "src/components/LineChart";
 import BarChart from "src/components/BarChart";
