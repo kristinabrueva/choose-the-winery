@@ -2,6 +2,16 @@
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with Typescript, Tailwind and ChartJS.
 
+You have made the decision that you'd like to start your own Vineyard in one of the 5 regions. However there are some questions that you'd like to answer first before you can decide on which region is best.
+
+- For each region, when is the best time of the year to grow grapes for wine production?
+
+- Over the past 10 years, which region has historically had the worst climate for growing grapes for wine production?
+
+- For each region over a 30 year period, what percentage of that period can we expect to have good grapes for wine production?
+
+Use climate data from the Open Mateo Climate API (https://open-meteo.com/en/docs/climate-api) as the data source for your dashboard.
+
 ## Setup
 
 - Install all dependencies: `npm install`
